@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -46,9 +47,9 @@ public class Product extends BaseEntity{
 	
 
 	
-	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL, orphanRemoval = true)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<ProductImage> images = new ArrayList<>();
+	@Lob
+	@Column(columnDefinition = "BLOB")
+	private byte[] productImage;
 
 	
 	private int stock;
@@ -57,7 +58,7 @@ public class Product extends BaseEntity{
 	
 	private String brand;
 	
-	private int price;
+	private double price;
 	
 	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL, orphanRemoval = true)
 	@LazyCollection(LazyCollectionOption.FALSE)
@@ -73,20 +74,10 @@ public class Product extends BaseEntity{
 	private String productType;
 	
 	
-	public void setImages(MultipartFile[] image) {
-		
-		for(MultipartFile arr : image) {
-			ProductImage tempImg = new ProductImage();
-			try {
-				tempImg.setImage(arr.getBytes());
-				tempImg.setProduct(this);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			images.add(tempImg);
-		
-	}
-}
+	private double offers;
+	
+
+
 	
 	
 }

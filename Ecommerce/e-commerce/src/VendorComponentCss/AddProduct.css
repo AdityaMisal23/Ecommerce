@@ -1,7 +1,8 @@
 .media-form{
     background-color: #002333;
-    height: 900px;
+    height: 1000px;
     width: 1175px;
+    margin-left: 0px;
 }
 .form-row{
     display: flex !important;

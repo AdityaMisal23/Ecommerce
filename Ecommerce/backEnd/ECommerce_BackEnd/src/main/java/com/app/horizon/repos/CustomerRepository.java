@@ -8,5 +8,6 @@ import com.app.horizon.entities.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	Customer getByEmail(String email);
+
 	
 }

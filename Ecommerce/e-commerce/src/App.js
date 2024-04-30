@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from './Customer_Components/NavBar';
 import SideBar from './Customer_Components/SideBar';
 import Footer from './Customer_Components/Footer';
@@ -11,7 +11,7 @@ import L from './Customer_Components/Login';
 import Home from './Customer_Components/Home';
 import Cart from './Customer_Components/Cart';
 import { VendorHome2 } from './VendorComponents/VendorHome2';
-
+import { AdminHomePage } from './AdminComponents/ADminHomePage';
 
 
 import {BrowserRouter as Router, Routes , Route} from 'react-router-dom';
@@ -20,11 +20,18 @@ import HomePage from './Customer_Components/HomePage';
 import { VendorHome } from './VendorComponents/VendorHome';
 import { AddProduct } from './VendorComponents/AddProduct';
 
-// import Home from './Components/Home';
+
+
+
  
 function App() {
+
+  const [username, setName] = useState("");
+  const [id, setId]  = useState("");
+  
   return (
     <div>
+      
         <Router>
             <Routes>
                 <Route path='/Login' element={<L></L>}/>
@@ -42,8 +49,15 @@ function App() {
                 <Route path='/VendorHome2' element={<VendorHome2/>}/>
 
                 <Route path='/Customer/Cart' element={<Home></Home>}/>
+                <Route path='/AdminHome' element={<AdminHomePage></AdminHomePage>}/>
+                <Route path='/Customer/AllProduct' element={<Home></Home>}></Route>
+                <Route path='Home/Wallet' element={<Home></Home>}/>
+                <Route path='/Customer/OrderSuccess' element={<Home></Home>}/>
+                <Route path='/Customer/OrderSuccessful' element={<Home></Home>}/>
 
-                <Route/>
+                <Route path='/customer/Profile' element={<Home></Home>}/>
+
+  
             </Routes>
         </Router>
     </div>

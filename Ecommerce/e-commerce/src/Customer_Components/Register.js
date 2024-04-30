@@ -28,7 +28,7 @@ function Register(){
   const [shopName, setShopName] = useState("");
   const [adharNumber, setAdhar] = useState("");
   const [gstNumber, setGst] = useState("");
-  const [homeAadrress, setHome] = useState({city: "", state: "", pincode : "", fullAddress : "", type: false})
+  const [homeAdrress, setHome] = useState({city: "", state: "", pincode : "", fullAddress : "", type: false})
   const [shopAddress, setShop] = useState({city: "", state: "", pincode : "", fullAddress :"", type: true});
 
 
@@ -40,7 +40,7 @@ function Register(){
                         "firstName" : firstName,
                         "lastName" : lastName,
                         "mobileNumber" : mobileNumber,
-                        "homeAadrress" : homeAadrress 
+                        "homeAddress" : homeAdrress 
                       }
         try{
           const response = await axios.post("http://localhost:7070/Customer/SignUp", data);
@@ -60,7 +60,7 @@ function Register(){
                       "shopName" : shopName,
                       "adharNumber" : adharNumber,
                       "gstNumber" : gstNumber,
-                      "homeAddress" : homeAadrress,
+                      "homeAddress" : homeAdrress,
                       "shopAddress" : shopAddress
                     }
         console.log("data: "+ shopName);
@@ -196,24 +196,24 @@ function Register(){
 <div className="form-row">
   <div className="form-group col-md-6">
     <label for="inputCity">City</label>
-    <input type="text" className="form-control" id="inputCity" onChange={(e)=>{homeAadrress.city = e.target.value}}/>
+    <input type="text" className="form-control" id="inputCity" onChange={(e)=>{homeAdrress.city = e.target.value}}/>
   </div>
   <div className="form-group col-md-4">
     <label for="inputState">State</label>
-    <select id="inputState" className="form-control" onChange={(e)=>{homeAadrress.state = e.target.value}}>
+    <select id="inputState" className="form-control" onChange={(e)=>{homeAdrress.state = e.target.value}}>
       <option selected>Choose...</option>
       <option>...</option>
     </select>
   </div>
   <div className="form-group col-md-2">
     <label for="inputZip">Zip</label>
-    <input type="text" className="form-control" id="inputZip" onChange={(e)=>{homeAadrress.pincode = e.target.value}} />
+    <input type="text" className="form-control" id="inputZip" onChange={(e)=>{homeAdrress.pincode = e.target.value}} />
   </div>
 </div>
 
 <div className="form-group">
   <label for="inputHomeAddress">Home Address</label>
-  <input type="text" className="form-control" id="inputHomeAddress" placeholder="1234 Main St" onChange={(e)=>{homeAadrress.fullAddress = e.target.value}}/>
+  <input type="text" className="form-control" id="inputHomeAddress" placeholder="1234 Main St" onChange={(e)=>{homeAdrress.fullAddress = e.target.value}}/>
 </div>
 
 
@@ -233,7 +233,7 @@ function Register(){
 
 
 <button type="submit" className="btn btn-primary" onClick={handleSignUp}>Sign Up</button>
-<p className='loginbtn'>Already Have an Account?  <Link to="/">Login</Link> </p> 
+<p className='loginbtn'>Already Have an Account?  <Link to="/Login">Login</Link> </p> 
 
      
     

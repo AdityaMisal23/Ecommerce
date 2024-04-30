@@ -1,10 +1,37 @@
 import { useState } from "react";
 import '../ComponentsCss/JoinExclusive.css'
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import 'react-toastify/dist/ReactToastify.css';
 
 function JoinEx(){
     const [exclusive , setExclusive] =  useState(false);
     const [supers , setSupers] =  useState(false);
+    const mystate = useSelector((state)=>state.reducer);
 
+    const HandleOnclick1 = async () =>{
+        try{
+            const response = await axios.put("http://localhost:7070/Customer/JoinExclusive/1/"+mystate.id);
+            console.log(response.data);
+            toast.success("Great, Now you are Exclusive Member");
+        }
+        catch(e){
+            toast.error("Server is not responding");
+            // throw new Error(e);
+        }
+    }
+    const HandleOnclick2 = async() =>{
+        try{
+            const response = await axios.put("http://localhost:7070/Customer/JoinExclusive/2/"+mystate.id);
+            console.log(response.data);
+            toast.success("Great, Now you are Exclusive Member");
+        }
+        catch(e){
+            toast.error("Server is not responding");
+            // throw new Error(e);
+        }
+    }
 
 
     return (
@@ -22,9 +49,9 @@ function JoinEx(){
                     - gwt goodies
                     <br></br>
                 </h5>
-                <button className="customButton buyNow" style={{marginTop:'200px'}}>Rs 499/month</button>
+                <button className="customButton buyNow" style={{marginTop:'200px'}} onClick={HandleOnclick2}>Rs 499/month</button>
             </span>
-            <span style={{width:'330px', height:'530px',backgroundColor:'#002333', marginLeft:'40px'}}>
+            <span style={{width:'330px', height:'530px',backgroundColor:'#002333', marginLeft:'40px'}} >
                 <h2 style={{marginLeft:'45px'}}>
                     Exclusive plan
                 </h2>
@@ -39,7 +66,7 @@ function JoinEx(){
                     - Additional offers in each product
                     <br></br>
                 </h5>
-                <button style={{marginTop:'150px'}} className="customButton buyNow">Rs 799/month</button>
+                <button style={{marginTop:'150px'}} className="customButton buyNow" onClick={HandleOnclick2} >Rs 799/month</button>
             </span>
 
 

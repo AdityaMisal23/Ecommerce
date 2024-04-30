@@ -21,7 +21,7 @@ export const VendorHome=()=>{
             <div style={{display:'flex'}} className="main">
             <div className="vendorHome">
                 {categories.map((category)=>(
-                    <div id={category.id} className="media-element">
+                    <div id={category.id} className="media-element" onClick={{}}>
                         <img src={category.img} alt="Fashion Category" className="categories"></img>
                         <h3 className="categories-text">{category.name}</h3>
                     </div>

@@ -10,10 +10,11 @@
 
 .media-element{
     display: grid;
-    width: fit-content;
-    margin:15rem;
+    /* width: fit-content; */
+    /* margin:15rem; */
     background-color: #002333;
     border-radius: 3rem;
+    margin-left: 20px;
 }
 
 .categories-text{
@@ -26,7 +27,7 @@
     /* 
    
     border: 2px dotted; */
-    /* width: 85vw; */
+    width: 85vw;
     /* padding: 3px;
     margin: 1px; */
     gap:var(--size-3);

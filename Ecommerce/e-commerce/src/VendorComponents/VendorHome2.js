@@ -9,44 +9,43 @@ import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const VendorHome2=()=>{
     const navigate = useNavigate();
     const [vendorId , setVendorId] = useState(0);
     const location = useLocation();
-    const receivedData = location.state;
     const [response, setResponse] = useState({}); 
     const [items, setItems] = useState([]);
     let num = 1;
-    const handleOnclick = () =>{
-        navigate("/VendorHome/AddProducts",{state : {id : vendorId, name : receivedData.name}});
-    }
+  
+    const myState = useSelector((state)=> state.reducer);
 
 
 
     useEffect(() => {
         async function handleOnLoad() {
-          console.log("Hello...............");
-          console.log(receivedData);
-          setVendorId(receivedData.id);
+            console.log(myState);
+          setVendorId(myState.id);
           try {
             const response = await axios.get("http://localhost:7070/VendorProduct/AllProducts", {
-              params: { Vendorid: receivedData.id }
+              params: { Vendorid: myState.id }
             });
       
-            // Use the response.data directly instead of setting a separate state variable
             setItems(response.data);
-            console.log("successful :", response.data);
           } catch (err) {
-            console.log("unsuccessful");
             throw new Error(err);
           }
         }
       
         handleOnLoad();
-      }, [receivedData.id]); // Include receivedData.id as a dependency
+      }, []);
       
 
+
+    const handleOnclick = () =>{
+        navigate("/VendorHome/AddProducts");
+    }
 
 
 
@@ -54,7 +53,7 @@ export const VendorHome2=()=>{
 
     return (
         <div>
-            <VNavBar name={receivedData.name}/>
+            <VNavBar/>
             <div>
             <div className="container" style={{marginBottom:'500px', marginTop:'100px'}}>
             <div style={{display:'flex'}}>

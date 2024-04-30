@@ -20,4 +20,18 @@ public interface CustomerService {
 	Customer registerCustomer(CustomerDto cDto);
 
 	Customer uploadImage(MultipartFile file, Long id) throws IOException;
+
+	Customer getCustomerInfo(long id);
+
+	myResponse updateName(String name, long id);
+	
+	myResponse updatePassword(String password, long id);
+	
+	myResponse updateProfile(MultipartFile file);
+
+	myResponse joinEx(long id, int num);
+	
+	public void updateOrderStatus();
+
+	myResponse IsEx(long myId);
 }

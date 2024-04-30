@@ -1,0 +1,24 @@
+.meracontainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+.merasubdiv {
+    width: calc(25% - 20px);
+    margin: 10px;
+    background-color: 	#F7F7F7;
+    align-content: center;
+    height: 400px;
+} 
+
+.meraimg{
+    width: 200px;
+    height: 250px;
+    margin-left: 47px;
+    
+}
+
+.myh6{
+    margin-top: 20px;
+    color: black;
+}

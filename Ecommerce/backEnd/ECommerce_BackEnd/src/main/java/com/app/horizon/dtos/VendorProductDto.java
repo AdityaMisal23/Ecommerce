@@ -23,4 +23,5 @@ public class VendorProductDto {
 	private int productQuantity;
 	private double price;
 	LocalDateTime dateOfAdding;
+	long vendorId;
 }

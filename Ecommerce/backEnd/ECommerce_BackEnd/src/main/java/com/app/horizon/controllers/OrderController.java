@@ -3,7 +3,11 @@ package com.app.horizon.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -21,19 +25,9 @@ public class OrderController {
 	private OrderService orderServ;
 	
 	
-	@PostMapping
-	public ResponseEntity<?> addProductTOCart(@RequestBody OrderDto orderDto){
-		
-		System.out.println("in Add Product To Cart");	
-		
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(orderServ.addProductTOCart(orderDto));
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something is fishy.");
+	@GetMapping("/AddLive/{cid}")
+	public ResponseEntity<?> addDataLive(@PathVariable("cid") String cid){
+		long myId = Long.parseLong(cid);
+		return ResponseEntity.ok(orderServ.addLiveData(myId));
 	}
-
 }

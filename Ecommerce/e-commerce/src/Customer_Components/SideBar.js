@@ -80,7 +80,7 @@ function SideBar(){
                         Special for your
                     </Link>               
                 </div>
-                <hr></hr>
+                <hr className="underline"></hr>
                 <div>
                     <Link to ='/Customer/Exclusive' style={{textDecoration:'none'}}>
                         Join Exclusive !

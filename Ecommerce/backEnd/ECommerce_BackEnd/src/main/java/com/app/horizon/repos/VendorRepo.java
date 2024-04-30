@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.app.horizon.entities.Vendor;
 
 @Repository
-public interface VendorRepo extends JpaRepository<Vendor, Integer>{
+public interface VendorRepo extends JpaRepository<Vendor, Long>{
 
 	Vendor getByEmail(String email);
 

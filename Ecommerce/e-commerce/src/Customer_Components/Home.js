@@ -11,8 +11,15 @@ import PendingOrders from "./PendingOrders";
 import CommentsAndReviews from "./CommentsAndReviews";
 import Success from "./SuccessBuy";
 import JoinEx from "./JoinExclusive";
+import Coins from "./Coins";
+import OrderSuccess from "./OrderSucc";
+
+import OrderSuccessFul from "./OrderSuccessful";
+
 
 import Cart from "./Cart";
+import {useEffect } from "react";
+import AllProducts from "./AllProducts";
 
 function Home(){
     const location = useLocation();
@@ -27,7 +34,8 @@ function Home(){
             <div style={{display:'flex'}}>
             <SideBar></SideBar>
             {path === '/Customer/Product' && (
-                <div style={{width:'85vw'}}>
+                <div style={{width:'84vw'}}>
+                    {/* <SideBar /> */}
                     <Product></Product>
                     <SimilarProducts></SimilarProducts>
                     <CommentsAndReviews></CommentsAndReviews>
@@ -35,15 +43,18 @@ function Home(){
             )}
             {path === '/Customer/Pending' && (
                 <div>
+                    <SideBar />
                     <PendingOrders></PendingOrders>
                     <SimilarProducts></SimilarProducts>
             </div>
             )}
-            {path === '/Customer/Profile' && (
+            {path === '/customer/Profile' && (
                     // <div style={{width:'700px'}}>
                     //     <Profile></Profile>
                     // </div>
+                    <div>
                     <Profile></Profile>
+                    </div>
             )}
             {path === '/Customer/Success' &&(
                 <Success></Success>
@@ -53,15 +64,37 @@ function Home(){
                     // <div style={{width:'700px'}}>
                     //     <Profile></Profile>
                     // </div>
-                    <div>
                         <JoinEx></JoinEx>
-                        <SimilarProducts></SimilarProducts>
-                    </div>
+    
+
             )}
 
+            {
+                path === '/Customer/AllProduct' &&
+                <div>
+                    <AllProducts></AllProducts>
+                </div>
+            }
+
+            {path === '/Customer/OrderSuccess' &&
+                <OrderSuccess></OrderSuccess>
+            
+            }
+
+            {path === '/Customer/OrderSuccessful' &&
+                <OrderSuccessFul></OrderSuccessFul>
+            }
+
+            {path === '/Home/Wallet' &&
+                <div>
+                    <Coins></Coins>
+                </div>    
+            }
             
             {path === '/Customer/Cart' &&(
+                <div>
                 <Cart></Cart>
+                </div>
             )}
 
 
